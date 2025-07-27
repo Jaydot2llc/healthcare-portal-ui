@@ -21,6 +21,49 @@ git remote add origin git@github.com:Jaydot2llc/healthcare-portal-ui.git
 git push -u origin main
 ```
 
+## UI Dependencies
+
+Install Tailwind CSS:
+
+```sh
+npm install tailwindcss @tailwindcss/postcss postcss --save
+```
+
+## Testing
+
+Setup the testing environment.
+
+```sh
+npm install -D jest jest-environment-jsdom @testing-library/react @testing-library/dom @testing-library/jest-dom ts-node
+
+npm install --save-dev @types/jest
+
+npm install --save-dev ts-jest
+
+npm install --save-dev @jest/globals
+
+npm install --save-dev ts-node
+
+npm init jest@latest
+```
+
+Create a `jest.config.ts` configuration file at the root of the project.
+
+```json
+const nextJest = require('next/jest')
+ 
+// Providing the path to your Next.js app which will enable loading next.config.js and .env files
+const createJestConfig = nextJest({ dir: './' })
+ 
+// Any custom config you want to pass to Jest
+const customJestConfig = {
+  setupFilesAfterEnv: ['./jest.config.ts'],
+}
+ 
+// createJestConfig is exported in this way to ensure that next/jest can load the Next.js configuration, which is async
+module.exports = createJestConfig(customJestConfig)
+```
+
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
@@ -81,3 +124,5 @@ export default tseslint.config([
   },
 ])
 ```
+
+## References
